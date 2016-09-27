@@ -1,84 +1,50 @@
 <?php
-/**
- * The template for displaying comments.
- *
- * This is the template that displays the area of the page that contains both the current comments
- * and the comment form.
- *
- * @link https://codex.wordpress.org/Template_Hierarchy
- *
- * @package Stuart_McCloud_Music
- */
-
 /*
- * If the current post is protected by a password and
- * the visitor has not yet entered the password we will
- * return early without loading the comments.
- */
+The comments page for Bones
+*/
+
+// don't load it if you can't comment
 if ( post_password_required() ) {
-	return;
+  return;
 }
+
 ?>
 
-<div id="comments" class="comments-area">
+<?php // You can start editing here. ?>
 
-	<?php
-	// You can start editing here -- including this comment!
-	if ( have_comments() ) : ?>
-		<h2 class="comments-title">
-			<?php
-				printf( // WPCS: XSS OK.
-					esc_html( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'stuartmccloudmusic' ) ),
-					number_format_i18n( get_comments_number() ),
-					'<span>' . get_the_title() . '</span>'
-				);
-			?>
-		</h2>
+  <?php if ( have_comments() ) : ?>
 
-		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
-		<nav id="comment-nav-above" class="navigation comment-navigation" role="navigation">
-			<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'stuartmccloudmusic' ); ?></h2>
-			<div class="nav-links">
+    <h3 id="comments-title" class="h2"><?php comments_number( __( '<span>No</span> Comments', 'bonestheme' ), __( '<span>One</span> Comment', 'bonestheme' ), __( '<span>%</span> Comments', 'bonestheme' ) );?></h3>
 
-				<div class="nav-previous"><?php previous_comments_link( esc_html__( 'Older Comments', 'stuartmccloudmusic' ) ); ?></div>
-				<div class="nav-next"><?php next_comments_link( esc_html__( 'Newer Comments', 'stuartmccloudmusic' ) ); ?></div>
+    <section class="commentlist">
+      <?php
+        wp_list_comments( array(
+          'style'             => 'div',
+          'short_ping'        => true,
+          'avatar_size'       => 40,
+          'callback'          => 'bones_comments',
+          'type'              => 'all',
+          'reply_text'        => __('Reply', 'bonestheme'),
+          'page'              => '',
+          'per_page'          => '',
+          'reverse_top_level' => null,
+          'reverse_children'  => ''
+        ) );
+      ?>
+    </section>
 
-			</div>
-		</nav>
-		<?php endif; // Check for comment navigation. ?>
+    <?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
+    	<nav class="navigation comment-navigation" role="navigation">
+      	<div class="comment-nav-prev"><?php previous_comments_link( __( '&larr; Previous Comments', 'bonestheme' ) ); ?></div>
+      	<div class="comment-nav-next"><?php next_comments_link( __( 'More Comments &rarr;', 'bonestheme' ) ); ?></div>
+    	</nav>
+    <?php endif; ?>
 
-		<ol class="comment-list">
-			<?php
-				wp_list_comments( array(
-					'style'      => 'ol',
-					'short_ping' => true,
-				) );
-			?>
-		</ol>
-		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
-		<nav id="comment-nav-below" class="navigation comment-navigation" role="navigation">
-			<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'stuartmccloudmusic' ); ?></h2>
-			<div class="nav-links">
+    <?php if ( ! comments_open() ) : ?>
+    	<p class="no-comments"><?php _e( 'Comments are closed.' , 'bonestheme' ); ?></p>
+    <?php endif; ?>
 
-				<div class="nav-previous"><?php previous_comments_link( esc_html__( 'Older Comments', 'stuartmccloudmusic' ) ); ?></div>
-				<div class="nav-next"><?php next_comments_link( esc_html__( 'Newer Comments', 'stuartmccloudmusic' ) ); ?></div>
+  <?php endif; ?>
 
-			</div>
-		</nav>
-		<?php
-		endif; // Check for comment navigation.
+  <?php comment_form(); ?>
 
-	endif; // Check for have_comments().
-
-
-	// If comments are closed and there are comments, let's leave a little note, shall we?
-	if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) : ?>
-
-		<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'stuartmccloudmusic' ); ?></p>
-	<?php
-	endif;
-
-	comment_form();
-	?>
-
-</div><!-- #comments -->

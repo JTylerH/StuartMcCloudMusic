@@ -1,1 +1,1 @@
-"assets/stylesheets/**/*.scss": "node-sass assets/stylesheets/style.scss assets/stylesheets/style.min.css"
+"library/less/**/*.less": "lessc library/less/style.less library/css/style.css --source-map"

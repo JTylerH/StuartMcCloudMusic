@@ -1,60 +1,43 @@
-<?php
-/**
- * The template for displaying 404 pages (not found).
- *
- * @link https://codex.wordpress.org/Creating_an_Error_404_Page
- *
- * @package Stuart_McCloud_Music
- */
+<?php get_header(); ?>
 
-get_header(); ?>
+			<div id="content">
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+				<div id="inner-content" class="wrap cf">
 
-			<section class="error-404 not-found">
-				<header class="page-header">
-					<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'stuartmccloudmusic' ); ?></h1>
-				</header>
-				<div class="page-content">
-					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'stuartmccloudmusic' ); ?></p>
+					<main id="main" class="m-all t-2of3 d-5of7 cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
-					<?php
-						get_search_form();
+						<article id="post-not-found" class="hentry cf">
 
-						the_widget( 'WP_Widget_Recent_Posts' );
+							<header class="article-header">
 
-						// Only show the widget if site has multiple categories.
-						if ( stuartmccloudmusic_categorized_blog() ) :
-					?>
+								<h1><?php _e( 'Epic 404 - Article Not Found', 'bonestheme' ); ?></h1>
 
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'stuartmccloudmusic' ); ?></h2>
-						<ul>
-						<?php
-							wp_list_categories( array(
-								'orderby'    => 'count',
-								'order'      => 'DESC',
-								'show_count' => 1,
-								'title_li'   => '',
-								'number'     => 10,
-							) );
-						?>
-						</ul>
-					</div>
-					<?php
-						endif;
+							</header>
 
-						/* translators: %1$s: smiley */
-						$archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'stuartmccloudmusic' ), convert_smilies( ':)' ) ) . '</p>';
-						the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content" );
+							<section class="entry-content">
 
-						the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
+								<p><?php _e( 'The article you were looking for was not found, but maybe try looking again!', 'bonestheme' ); ?></p>
+
+							</section>
+
+							<section class="search">
+
+									<p><?php get_search_form(); ?></p>
+
+							</section>
+
+							<footer class="article-footer">
+
+									<p><?php _e( 'This is the 404.php template.', 'bonestheme' ); ?></p>
+
+							</footer>
+
+						</article>
+
+					</main>
 
 				</div>
-			</section>
-		</main>
-	</div>
-<?php
-get_footer();
+
+			</div>
+
+<?php get_footer(); ?>

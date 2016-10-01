@@ -1,17 +1,96 @@
-/*
-Theme Name: Stuart McCloud Music
-Theme URI: http://components.underscores.me/
-Author: Tyler Hall
-Author URI: http://johntylerhall.com
-Description: Producer for Hire | Stuart McCloud Music
-Version: 1.0.0
-License: GNU General Public License v2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: stuartmccloudmusic
-Tags:
-
-*/
-
 @import 'bootstrap/bootstrap';
-
 @import 'variables';
+
+
+/* SETUP */
+/*=============================*/
+
+.font(){
+  font-family: 'Montserrat', sans-serif;
+}
+
+.subfont(){
+  font-family: 'Open Sans', sans-serif;
+}
+
+body{
+  letter-spacing: 0.1em;
+}
+
+/* COMPONENT STYLES */
+/*=============================*/
+
+
+.hero{
+  background-color: #333;
+  background-image: url(../img/home.jpg);
+  text-align: center;
+  padding: 180px 0;
+  background-position: 100% 40%;
+  background-size:100%;
+  color:#fff;
+  .tag{
+    .font();
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.3em;
+    font-size:36px;
+  }
+  .subtag{
+    font-size:20px;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+  }
+}
+
+.container{
+  &.narrow{
+    max-width:600px;
+  }
+}
+
+section{
+  background-color: #fff;
+  padding-top:50px;
+  padding-bottom:50px;
+  &.offwhite{
+    background-color:@offwhite;
+  }
+  &.graydark{
+    background-color: @gray-dark;
+  }
+  &.graydarker{
+    background-color: @gray-darker;
+  }
+}
+
+.container{
+    h2{
+      text-align: center;
+      padding-bottom:50px;
+      text-transform:uppercase;
+    }
+}
+
+.container.projects{
+  max-width:896px+@grid-gutter-width;
+}
+
+.project{
+  max-width:448px;
+  padding-bottom:50px;
+  margin: 0 auto;
+  img{
+    width: 100%;
+    margin: 0 auto;
+    max-width: 360px;
+    display: block;
+  }
+  .caption{
+    padding-top:15px;
+    text-align:center;
+    p{
+      margin-bottom: 0;
+    }
+  }
+}

@@ -244,4 +244,44 @@ function bones_fonts() {
 
 add_action('wp_enqueue_scripts', 'bones_fonts');
 
+function font_icons() {
+  wp_enqueue_style('fontAwesome','//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css');
+}
+
+add_action('wp_enqueue_scripts', 'font_icons');
+
+/* Admin Styles */
+/*===========================================*/
+
+function load_custom_wp_admin_style() {
+        wp_register_style( 'custom_wp_admin_css', get_template_directory_uri() . '/library/css/admin.css', false, '1.0.0' );
+        wp_enqueue_style( 'custom_wp_admin_css' );
+}
+add_action( 'admin_enqueue_scripts', 'load_custom_wp_admin_style' );
+
+
+/* Advanced Custom Fields */
+/*===========================================*/
+acf_add_options_page(array(
+ 'page_title' 	=> 'Stuart McCloud Music Site Settings',
+ 'menu_title'	=> 'Site',
+ 'menu_slug' 	=> 'smm-settings',
+ 'icon_url'     => 'dashicons-admin-settings',
+ 'position'     => '1',
+ //'parent_slug'  => 'options-general.php',
+ 'capability'	=> 'edit_posts',
+ 'redirect'		=> 'smm-home'
+));
+
+acf_add_options_sub_page(array(
+ 'page_title' 	=> 'Home Page Options',
+ 'menu_title'	=> 'Home Page',
+ 'menu_slug' 	=> 'smm-home',
+ 'position'     => '1',
+ 'parent_slug' 	=> 'smm-settings',
+ 'capability'	=> 'edit_posts',
+ 'redirect'		=> false
+));
+
+
 /* DON'T DELETE THIS CLOSING TAG */ ?>

@@ -110,6 +110,13 @@ function loadGravatars() {
 */
 jQuery(document).ready(function($) {
 
+	$('a[href^="#"]').click(function() {
+			var scrollTo = $(this).attr("href");
+	    $('html, body').animate({
+	        scrollTop: $(scrollTo).offset().top
+	    }, 500);
+	});
+
   /*
    * Let's fire off the gravatar function
    * You can remove this if you don't need it

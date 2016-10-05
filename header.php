@@ -45,31 +45,21 @@
 		<div id="container">
 
 			<header class="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
-					<nav role="navigation" class="navbar navbar-default navbar-fixed-top" itemscope itemtype="http://schema.org/SiteNavigationElement">
-						<div class="container-fluid">
-							<div class="navbar-header">
-					      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-					        <span class="sr-only">Toggle navigation</span>
-					        <span class="icon-bar"></span>
-					        <span class="icon-bar"></span>
-					        <span class="icon-bar"></span>
-					      </button>
-					      <a class="navbar-brand" href="#">Stuart McCloud</a>
-					    </div>
-							<?php wp_nav_menu(array(
-	    					         'container' => false,                           // remove nav container
-	    					         'container_class' => 'navbar navbar-default',                 // class of container (should you choose to use it)
-	    					         'menu' => __( 'The Main Menu', 'bonestheme' ),  // nav name
-	    					         'menu_class' => 'nav navbar-nav',               // adding custom nav class
-	    					         'theme_location' => 'main-nav',                 // where it's located in the theme
-	    					         'before' => '',                                 // before the menu
-	        			               'after' => '',                                  // after the menu
-	        			               'link_before' => '',                            // before each link
-	        			               'link_after' => '',                             // after each link
-	        			               'depth' => 0,                                   // limit the depth of the nav
-	    					         'fallback_cb' => ''                             // fallback function (if there is one)
-							)); ?>
-						</div>
-					</nav>
+				<nav role="navigation" class="container" itemscope itemtype="http://schema.org/SiteNavigationElement">
+					<div class="site-name"><?php the_field('hero_title', 'option'); ?></div>
+					<?php wp_nav_menu(array(
+  					         'container' => false,                           // remove nav container
+  					         'container_class' => 'navbar navbar-default',                 // class of container (should you choose to use it)
+  					         'menu' => __( 'The Main Menu', 'bonestheme' ),  // nav name
+  					         'menu_class' => 'header-nav',               // adding custom nav class
+  					         'theme_location' => 'main-nav',                 // where it's located in the theme
+  					         'before' => '',                                 // before the menu
+      			               'after' => '',                                  // after the menu
+      			               'link_before' => '',                            // before each link
+      			               'link_after' => '',                             // after each link
+      			               'depth' => 0,                                   // limit the depth of the nav
+  					         'fallback_cb' => ''                             // fallback function (if there is one)
+					)); ?>
 
+				</nav>
 			</header>

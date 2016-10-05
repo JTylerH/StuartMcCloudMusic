@@ -1,0 +1,45 @@
+.acf-postbox>h2{
+  background: #1e4d7b;
+  color: #fff;
+}
+
+#wpadminbar{
+  background-color: #1e4d7b;
+}
+
+body{
+  /*background:#f6fbff;*/
+}
+
+#titlediv #title, .acf-field input[type="text"], .acf-field input[type="password"], .acf-field input[type="number"], .acf-field input[type="search"], .acf-field input[type="email"], .acf-field input[type="url"], .acf-field textarea, .acf-field select {
+    font-size: 14px;
+    line-height: 15px;
+    border: none;
+    box-shadow: none;
+    border-bottom: 2px solid #1e4d7b;
+    background: #f6fbff;
+}
+
+#titlediv #title{
+  font-size:22px;
+}
+
+.acf-fields > .acf-field{
+  border-top-width: 0px!important;
+}
+
+.acf-button{
+
+}
+
+.acf-button.blue{
+
+}
+
+/*.postbox{
+  border:1px solid #f6fbff;
+}*/
+
+/*#adminmenu li a:focus div.wp-menu-image:before, #adminmenu li.opensub div.wp-menu-image:before, #adminmenu li:hover div.wp-menu-image:before, #adminmenu .wp-submenu a:focus, #adminmenu .wp-submenu a:hover, #adminmenu a:hover, #adminmenu li.menu-top>a:focus{
+  color:#1b84f3;
+}*/
